@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   const element = document.getElementById("typing");
-  const text = "پیمان ایمن رهاورد سیستم";
+  const text = "شرکت پیمان ایمن رهاورد سیستم";
   let index = 0;
   let isDeleting = false;
   const speed = 100;   // سرعت تایپ
