@@ -308,22 +308,134 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>تماس با ما</h2>
-    <form>
-      <input type="text" placeholder="نام شما" required>
-      <input type="email" placeholder="ایمیل شما" required>
-      <textarea placeholder="پیام شما" rows="5" required></textarea>
-      <button class="btn" type="submit">ارسال</button>
-    </form>
-  </section>
-
-  <section class="contact">
-    <li>📞 تلفن: 013-12345678</li>
-    <li>✉️ ایمیل: info@example.com</li>
-    <li>📍 آدرس: گیلان، لاهیجان، بلوار امام رضا، ساختمان رهاورد</li>
-  </section>
+ 
+  <!-- Contact Section - Modern Version -->
+<section id="contact" class="modern-contact">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>ارتباط با ما</h2>
+      <p class="contact-subtitle">آماده همکاری با شما هستیم</p>
+    </div>
+    
+    <div class="contact-content">
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <div class="form-wrapper">
+          <h3>پیام خود را ارسال کنید</h3>
+          <form class="modern-form" id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="نام و نام خانوادگی" required>
+              <label for="name">نام و نام خانوادگی</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="ایمیل شما" required>
+              <label for="email">ایمیل</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="شماره تماس">
+              <label for="phone">شماره تماس</label>
+            </div>
+            
+            <div class="form-group">
+              <select id="subject" name="subject" required>
+                <option value="">موضوع پیام را انتخاب کنید</option>
+                <option value="scada">سیستم‌های SCADA</option>
+                <option value="plc">کنترلرهای PLC</option>
+                <option value="rtu">واحدهای RTU</option>
+                <option value="hmi">رابط‌های HMI</option>
+                <option value="consultation">مشاوره فنی</option>
+                <option value="support">پشتیبانی</option>
+                <option value="other">سایر</option>
+              </select>
+              <label for="subject">موضوع</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="پیام شما..." rows="5" required></textarea>
+              <label for="message">پیام</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">ارسال پیام</span>
+              <span class="btn-icon">📧</span>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Contact Info & Map -->
+      <div class="contact-info-section">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h3>اطلاعات تماس</h3>
+          
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <span class="info-label">تلفن</span>
+              <span class="info-value">013-12345678</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">📱</div>
+            <div class="info-content">
+              <span class="info-label">موبایل</span>
+              <span class="info-value">0912-3456789</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-content">
+              <span class="info-label">ایمیل</span>
+              <span class="info-value">info@rehavardsystem.com</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <span class="info-label">آدرس</span>
+              <span class="info-value">گیلان، لاهیجان، بلوار امام رضا، ساختمان رهاورد</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">🕒</div>
+            <div class="info-content">
+              <span class="info-label">ساعت کاری</span>
+              <span class="info-value">شنبه تا پنج‌شنبه: 8:00 - 17:00</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Google Maps -->
+        <div class="map-container">
+          <h3>موقعیت ما روی نقشه</h3>
+          <div class="map-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.8267676089816!2d50.00769331531398!3d37.20280637987634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f1496b7c8d2f8b3%3A0x2a2a2a2a2a2a2a2a!2sLahijan%2C%20Gilan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+              width="100%" 
+              height="300" 
+              style="border:0; border-radius: 10px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-overlay">
+              <button class="map-btn" onclick="openInGoogleMaps()">
+                مشاهده در گوگل مپ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
