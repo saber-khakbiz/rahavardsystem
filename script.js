@@ -94,3 +94,59 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+
+mobileMenuBtn.addEventListener('click', function() {
+  this.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', function() {
+    mobileMenuBtn.classList.remove('active');
+    mobileNav.classList.remove('active');
+  });
+});
+
+// Header scroll effect
+let lastScroll = 0;
+const header = document.querySelector('.modern-header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// Active link indicator
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.offsetHeight;
+    
+    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
