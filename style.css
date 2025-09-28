@@ -1128,3 +1128,145 @@ footer {
   transform: scale(1.05);
 }
 
+/* Mobile Responsive Design for Contact Section */
+@media (max-width: 768px) {
+  .modern-contact {
+    padding: 60px 15px;
+  }
+  
+  .contact-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .form-wrapper {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+  
+  .form-wrapper h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 12px 15px;
+    font-size: 15px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+    top: -8px;
+    right: 12px;
+  }
+  
+  .submit-btn {
+    padding: 15px;
+    font-size: 15px;
+  }
+  
+  .contact-info-section {
+    gap: 25px;
+  }
+  
+  .contact-info,
+  .map-container {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .contact-info h3,
+  .map-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .info-item {
+    padding: 12px;
+    margin-bottom: 15px;
+    gap: 12px;
+  }
+  
+  .info-icon {
+    font-size: 20px;
+    width: 35px;
+  }
+  
+  .info-content {
+    flex: 1;
+  }
+  
+  .info-label {
+    font-size: 13px;
+  }
+  
+  .info-value {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .map-wrapper iframe {
+    height: 250px;
+  }
+  
+  .map-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-contact {
+    padding: 40px 10px;
+  }
+  
+  .contact-header {
+    margin-bottom: 40px;
+  }
+  
+  .contact-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-content {
+    gap: 30px;
+  }
+  
+  .form-wrapper {
+    padding: 20px 15px;
+  }
+  
+  .contact-info,
+  .map-container {
+    padding: 15px 10px;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .info-icon {
+    align-self: center;
+  }
+  
+  .map-wrapper iframe {
+    height: 200px;
+  }
+}
