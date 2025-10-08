@@ -183,7 +183,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 // Open location in Google Maps
 function openInGoogleMaps() {
-  const address = 'گیلان، لاهیجان، بلوار امام رضا';
+  const address = '6X5X+C5C, Lahijan, Gilan Province, Iran';
   const encodedAddress = encodeURIComponent(address);
   window.open(`https://www.google.com/maps/search/${encodedAddress}`, '_blank');
 }
