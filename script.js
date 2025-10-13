@@ -302,6 +302,12 @@ function initTeamSlider() {
   
   // Update slidesPerView
   slidesPerView = getSlidesPerView();
+  const gap = 30; 
+  const gapsPerSlide = slidesPerView - 1;
+  const memberWidth = `calc((100% - ${gapsPerSlide * gap}px) / ${slidesPerView})`;
+  members.forEach(member => {
+  member.style.width = memberWidth; 
+});
   const totalSlides = Math.ceil(totalMembers / slidesPerView);
   
   // Create dots
