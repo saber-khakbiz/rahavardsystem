@@ -1058,6 +1058,78 @@ footer {
   51%, 100% { opacity: 0; }
 }
 
+/* Services Section Styles */
+#services {
+  background: #0f0f2a;
+  border-radius: 10px;
+  margin-top: 40px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#services h2 {
+  color: #e44f26;
+  margin-bottom: 40px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.service {
+  background: linear-gradient(135deg, #1a1a40, #2a2a60);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #333366;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  border-color: #4db8ff;
+  box-shadow: 0 15px 30px rgba(77, 184, 255, 0.2);
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(77, 184, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(77, 184, 255, 0.5));
+}
+
+.service h3 {
+  color: #4db8ff;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.service p {
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+
 /* Technologies Section Styles */
 #technologies {
   background: #0f0f2a;
