@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileNav = document.getElementById('mobileNav');
@@ -269,3 +270,183 @@ function addTypingIndicator() {
 }
 
 addTypingIndicator();
+
+// ==========================================
+// TEAM SLIDER FUNCTIONALITY
+// ==========================================
+
+let currentSlide = 0;
+let slidesPerView = 3;
+let autoPlayInterval;
+
+// Initialize slider when DOM is loaded
+function initTeamSlider() {
+  const teamSlider = document.getElementById('teamSlider');
+  const members = document.querySelectorAll('.member');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  if (!teamSlider || !members.length || !prevBtn || !nextBtn) {
+    return; // Exit if elements not found
+  }
+  
+  const totalMembers = members.length;
+  
+  // Calculate slides per view based on screen width
+  function getSlidesPerView() {
+    const width = window.innerWidth;
+    if (width <= 768) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  }
+  
+  // Update slidesPerView
+  slidesPerView = getSlidesPerView();
+  const totalSlides = Math.ceil(totalMembers / slidesPerView);
+  
+  // Create dots
+  function createDots() {
+    const dotsContainer = document.getElementById('sliderDots');
+    if (!dotsContainer) return;
+    
+    dotsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+  
+  // Update active dot
+  function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      if (index === currentSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+  
+  // Go to specific slide
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateSlider();
+  }
+  
+  // Slide team members
+  function slideTeam(direction) {
+    currentSlide += direction;
+    
+    if (currentSlide < 0) {
+      currentSlide = totalSlides - 1;
+    } else if (currentSlide >= totalSlides) {
+      currentSlide = 0;
+    }
+    
+    updateSlider();
+  }
+  
+  // Update slider position
+  function updateSlider() {
+  const isRTL = document.documentElement.dir === 'rtl'; // تشخیص RTL
+  const direction = isRTL ? 1 : -1; // در RTL مثبت، در LTR منفی
+  const memberWidthPx = members[0].offsetWidth; // عرض واقعی یک عضو
+  const gapPx = parseInt(getComputedStyle(teamSlider).gap) || 0; // فاصله gap
+  const slideWidthPx = (slidesPerView * memberWidthPx) + ((slidesPerView - 1) * gapPx); // عرض هر اسلاید کامل
+  const translateX = direction * (currentSlide * slideWidthPx);
+  teamSlider.style.transform = `translateX(${translateX}px)`;
+  updateDots();
+  console.log('Current slide:', currentSlide, 'TranslateX:', translateX, 'Direction:', direction); // برای دیباگ
+}
+  
+  // Auto play slider
+  function startAutoPlay() {
+    stopAutoPlay(); // Clear any existing interval
+    autoPlayInterval = setInterval(() => {
+      slideTeam(1);
+    }, 4000); // Change slide every 4 seconds
+  }
+  
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+    }
+  }
+  
+  // Button click events
+  prevBtn.addEventListener('click', () => {
+    slideTeam(-1);
+    stopAutoPlay();
+    startAutoPlay();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    slideTeam(1);
+    stopAutoPlay();
+    startAutoPlay();
+  });
+  
+  // Initialize slider
+  createDots();
+  updateSlider();
+  startAutoPlay();
+  
+  // Pause on hover
+  const sliderContainer = document.querySelector('.team-slider-container');
+  if (sliderContainer) {
+    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+    sliderContainer.addEventListener('mouseleave', startAutoPlay);
+  }
+  
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newSlidesPerView = getSlidesPerView();
+      if (newSlidesPerView !== slidesPerView) {
+        slidesPerView = newSlidesPerView;
+        currentSlide = 0;
+        createDots();
+        updateSlider();
+      }
+    }, 250);
+  });
+  
+  // Touch/Swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  teamSlider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay();
+  });
+  
+  teamSlider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    startAutoPlay();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      slideTeam(1); // Swipe left
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      slideTeam(-1); // Swipe right
+    }
+  }
+}
+
+// Initialize team slider after DOM is fully loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTeamSlider);
+} else {
+  initTeamSlider();
+}
