@@ -555,18 +555,18 @@ section h2 {
   position: relative;
   border-radius: 15px;
   background: rgba(26, 26, 64, 0.3);
-  padding: 20px 15px;
+  padding: 20px 0px;
 }
 
 .team-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 30px;
+  gap: 15px;
   flex-direction: row !important; /* force LTR order */
 }
 
 .member {
-  min-width: calc((100% - 90px) / 3);
+  min-width: calc((100% - 60px) / 3); 
   background: linear-gradient(135deg, #1a1a40, #2a2a60);
   padding: 30px 20px;
   border-radius: 15px;
