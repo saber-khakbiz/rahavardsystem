@@ -327,13 +327,6 @@ function initTeamSlider() {
     }
   }
 
-    for (let i = 0; i < totalSlides; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
   }
   
   // Update active dot
