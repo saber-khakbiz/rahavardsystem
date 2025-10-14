@@ -308,7 +308,7 @@ function initTeamSlider() {
   members.forEach(member => {
   member.style.width = memberWidth; 
 });
-  const totalSlides = Math.ceil(totalMembers / slidesPerView);
+  const totalSlides = Math.max(1, Math.ceil(totalMembers / slidesPerView));
   
   // Create dots
   function createDots() {
@@ -317,6 +317,16 @@ function initTeamSlider() {
     
     dotsContainer.innerHTML = '';
     
+    if (totalSlides > 1) {
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('span');
       dot.className = 'dot';
@@ -359,15 +369,16 @@ function initTeamSlider() {
   
   // Update slider position
   function updateSlider() {
-  const isRTL = document.documentElement.dir === 'rtl'; // تشخیص RTL
-  const direction = isRTL ? 1 : -1; // در RTL مثبت، در LTR منفی
-  const memberWidthPx = members[0].offsetWidth; // عرض واقعی یک عضو
-  const gapPx = parseInt(getComputedStyle(teamSlider).gap) || 0; // فاصله gap
-  const slideWidthPx = (slidesPerView * memberWidthPx) + ((slidesPerView - 1) * gapPx); // عرض هر اسلاید کامل
-  const translateX = direction * (currentSlide * slideWidthPx);
+  const isRTL = document.documentElement.dir === 'rtl';
+  const memberWidthPx = members[0].offsetWidth;
+  const gapPx = parseInt(getComputedStyle(teamSlider).gap) || 30;
+  
+  // محاسبه صحیح translateX برای RTL
+  const slideWidthPx = (slidesPerView * memberWidthPx) + (slidesPerView * gapPx);
+  const translateX = isRTL ? (currentSlide * slideWidthPx) : -(currentSlide * slideWidthPx);
+  
   teamSlider.style.transform = `translateX(${translateX}px)`;
   updateDots();
-  console.log('Current slide:', currentSlide, 'TranslateX:', translateX, 'Direction:', direction); // برای دیباگ
 }
   
   // Auto play slider

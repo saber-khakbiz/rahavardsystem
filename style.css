@@ -561,8 +561,8 @@ section h2 {
 .team-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 15px;
-  flex-direction: row !important; /* force LTR order */
+  gap: 30px;
+  justify-content: flex-start;
 }
 
 .member {
@@ -701,9 +701,13 @@ section h2 {
   .team-slider-container {
     padding: 0 50px;
   }
+
+  .team-slider {
+    gap: 15px;
+  }
   
   .member {
-    min-width: calc(100% - 30px);
+    min-width: calc(100% - 0px);
   }
   
   .slider-btn {
