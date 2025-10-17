@@ -95,6 +95,51 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// Projects Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const projectCards = document.querySelectorAll('.project-card');
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  document.body.appendChild(modal);
+
+  // محتوای نمونه برای هر پروژه (می‌تونید داینامیک کنید)
+  const projectDetails = {
+    project1: {
+      img: 'Images/project1-detail.jpg',
+      title: 'تعمیر و نگهداری نرم افزار و سخت افزار سامانه های راه دور در استان گیلان',
+      description: 'جزئیات کامل پروژه: استفاده از WinCC و IEC 61850 برای بهبود مانیتورینگ. نتیجه: کاهش ۳۰% زمان خاموشی.',
+      year: ' از 1396 تا هم اکنون'
+    },
+    // project2 و بقیه...
+  };
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const modalId = this.getAttribute('data-modal');
+      const detail = projectDetails[modalId];
+      if (detail) {
+        modal.innerHTML = `
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="${detail.img}" alt="${detail.title}" class="modal-img">
+            <h3>${detail.title}</h3>
+            <p>${detail.description}</p>
+            <span class="project-year">${detail.year}</span>
+          </div>
+        `;
+        modal.style.display = 'flex';
+      }
+    });
+  });
+
+  // Close modal
+  modal.addEventListener('click', function(e) {
+    if (e.target === this || e.target.classList.contains('close-modal')) {
+      this.style.display = 'none';
+    }
+  });
+});
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileNav = document.getElementById('mobileNav');
