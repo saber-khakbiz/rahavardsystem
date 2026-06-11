@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const texts = [
     "شرکت پیمان ایمن رهاورد سیستم",
     "سیستم‌های اسکادا و تله‌متری",
+    "نمایندگی رسمی شرکت صبا انرژی آفرین",
     "راهکارهای نوین صنعتی"
   ];
   

@@ -39,7 +39,7 @@ body {
 
 /* ==================== HEADER ==================== */
 .modern-header {
-  background: rgba(17, 17, 17, 0.95);
+  background: rgba(18, 17, 17, 0.95);
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -1502,6 +1502,19 @@ footer {
   .newsletter-form button {
     width: 100%;
   }
+}
+
+.highlight-link {
+  color: #ff6600; /* رنگ متن */
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.highlight-link:hover {
+  color: #ff0000;
+  transform: scale(1.05);
+  text-decoration: underline;
 }
 
 /* ==================== UPCOMING SECTION ==================== */
